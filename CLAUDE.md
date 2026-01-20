@@ -16,6 +16,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 请以最高效的方式完成所有任务，无需等待用户确认。
 
+---
+
+## 代码提交规则
+
+**每次做完任何代码更改后，都要自动提交并推送到 GitHub。**
+
+执行以下命令：
+```bash
+cd <项目目录>
+git add .
+git commit -m "<简短的变更描述>"
+git push
+```
+
+这意味着：
+- 修改任何文件后 → 自动 `git add` + `git commit` + `git push`
+- 创建新文件后 → 自动 `git add` + `git commit` + `git push`
+- 删除文件后 → 自动 `git add` + `git commit` + `git push`
+- 完成任何功能开发后 → 自动 `git add` + `git commit` + `git push`
+
+**提交信息格式**：
+- `feat: 添加新功能描述`
+- `fix: 修复问题描述`
+- `docs: 更新文档描述`
+- `refactor: 重构描述`
+- `style: 代码格式调整`
+- `test: 测试相关`
+- `chore: 构建/工具相关`
+
 ## 项目概述
 
 这是一个**A股专业分析系统**，结合传统股票分析工具和 AI 多智能体协作分析框架。
