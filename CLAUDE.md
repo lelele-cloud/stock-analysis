@@ -262,6 +262,65 @@ GET stock:600519:hist
 
 ## 部署
 
+### 服务器信息
+- **IP**: 8.148.245.222
+- **系统**: AlmaLinux
+- **GitHub**: https://github.com/lelele-cloud/stock-analysis
+
+### 代码更新流程
+
+#### 情况 1：修改了配置文件或简单代码
+**不需要重新构建镜像**，只需重启容器：
+```bash
+cd ~/stock-analysis
+docker compose restart
+```
+适用于：
+- 修改环境变量
+- 修改 Python/JS 代码逻辑
+- 修改样式
+
+#### 情况 2：修改了 Dockerfile 或依赖文件
+**需要重新构建镜像**：
+```bash
+cd ~/stock-analysis
+docker compose up -d --build
+```
+适用于：
+- 修改 `Dockerfile`
+- 修改 `requirements.txt`
+- 修改 `package.json`
+
+#### 情况 3：从 GitHub 拉取最新代码
+```bash
+cd ~/stock-analysis
+git pull
+docker compose restart
+```
+如果改了 Dockerfile 或依赖：
+```bash
+cd ~/stock-analysis
+git pull
+docker compose up -d --build
+```
+
+### 常用管理命令
+
+| 操作 | 命令 |
+|------|------|
+| 拉取最新代码 | `git pull` |
+| 重启服务 | `docker compose restart` |
+| 重新构建 | `docker compose up -d --build` |
+| 查看状态 | `docker compose ps` |
+| 查看日志 | `docker compose logs -f` |
+| 停止服务 | `docker compose down` |
+
+### 最常用的组合
+```bash
+cd ~/stock-analysis && git pull && docker compose restart
+```
+这个命令涵盖了 90% 的更新场景！
+
 ### 生产环境
 ```bash
 docker-compose -f docker-compose.prod.yml up -d
@@ -278,6 +337,7 @@ docker-compose -f docker-compose.prod.yml up -d
 ## 参考资源
 
 - [设计文档](./docs/plans/2026-01-20-stock-analysis-design.md) - 完整的系统设计
+- [部署指南](./DEPLOY_GUIDE.md) - 服务器部署详细步骤
 - [TradingAgents-CN](https://github.com/hsliuping/TradingAgents-CN) - AI 智能体参考项目
 - [Akshare 文档](https://akshare.akfamily.xyz/introduction.html) - A股数据接口
 - [OpenRouter](https://openrouter.ai) - LLM 聚合平台 (国内可访问)
