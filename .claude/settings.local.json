@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(wc:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nperf: 优化首次加载性能和 UI/UX 设计\n\n## 性能优化\n- 优化 Next.js 配置，启用代码分割和 chunk 分离\n- 动态导入所有图表组件，减少首次加载体积\n- 股票详情页添加请求取消和内存缓存机制\n- 使用 useMemo 和 useCallback 优化组件重渲染\n- 优化字体加载策略，使用 display: optional\n- 优化滚动条样式和滚动性能\n\n## UI/UX 优化\n- 重构首页设计，添加背景动画和渐变效果\n- 优化 Dashboard 侧边栏，添加渐变高亮和动画\n- 添加图表和卡片的骨架屏加载状态\n- 改进导航交互体验，添加悬停效果\n- 使用 React.memo 优化导航组件性能\n\n## 技术改进\n- 添加 AbortController 支持请求取消\n- 实现 LRU 缓存机制（最多缓存 10 个股票）\n- 优化图表数据计算，使用 useMemo 缓存结果\n- 添加响应式设计和过渡动画\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
