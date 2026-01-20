@@ -86,6 +86,10 @@ export const analysisApi = {
 
 // ==================== LLM 配置 API ====================
 export const llmApi = {
+  // 获取支持的提供商列表
+  getProviders: () =>
+    api.get('/llm/providers'),
+
   // 获取配置
   getConfig: () =>
     api.get('/llm/config'),

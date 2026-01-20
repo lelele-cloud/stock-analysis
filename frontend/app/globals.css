@@ -80,22 +80,33 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* 滚动条样式 */
+  /* 滚动条样式 - 优化性能 */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted/50;
+    @apply bg-muted/30;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded-md;
+    @apply bg-muted-foreground/20 rounded;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
+    @apply bg-muted-foreground/40;
+  }
+
+  /* 优化滚动性能 */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto !important;
+    }
   }
 
   /* 选中文本样式 */
